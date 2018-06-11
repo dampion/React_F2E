@@ -1,0 +1,12 @@
+.ToDoBody {
+	background: #C8C8C8;
+	height: 100%;
+}
+.ToDoInput {
+	background: #FFFFFF;
+	border: 2px solid #C8C8C8;
+	border-radius: 5px;
+	padding: 15px 15% 15px 5%;
+	margin: 15px;
+	font-size: 18px;
+}
