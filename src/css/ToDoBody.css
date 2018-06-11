@@ -1,6 +1,7 @@
 .ToDoBody {
 	background: #C8C8C8;
-	height: 100%;
+	padding: 20px 0;
+	margin-bottom: 10px;	
 }
 .ToDoInput {
 	background: #FFFFFF;

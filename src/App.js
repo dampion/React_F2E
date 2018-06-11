@@ -2,7 +2,7 @@
 
 // import react core and its component, usually we would import both 
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import ToDoHeader from './components/ToDoHeader';
 import ToDoBody from './components/ToDoBody';
 import ToDoItem from './components/ToDoItem';
@@ -20,4 +20,3 @@ class App extends Component {
 }
 
 export default App;
-

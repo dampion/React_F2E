@@ -8,7 +8,7 @@ class ToDoBody extends Component {
 				<input
 					type="text"
 					placeholder="+ Add Task"
-					class="ToDoInput"
+					className="ToDoInput"
 				/>
 
 			</div>
