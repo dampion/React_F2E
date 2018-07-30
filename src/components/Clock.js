@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class Clock extends Component {
   // declare props
@@ -28,7 +28,7 @@ class Clock extends Component {
       <div>
         <h1>Hi, it's {this.state.date.toLocaleTimeString()}.</h1>
       </div>
-      );
+    );
   }
 }
 
