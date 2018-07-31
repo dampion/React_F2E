@@ -3,7 +3,7 @@
 // import react core and its component, usually we would import both 
 import React, { Component } from 'react';
 import './css/App.css';
-import ToDoList from './components/ToDoList/ToDoList';
+import ToDoList from './components/ToDoList';
 // practice.js 
 // import Practice from './components/practice';
 

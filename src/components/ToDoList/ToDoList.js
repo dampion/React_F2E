@@ -1,56 +1,56 @@
 import React, { Component } from 'react';
-import '../../css/ToDoHeader.css';
-import '../../css/ToDoBody.css';
-import '../../css/ToDoItem.css';
+import '../../css/ToDoList.css';
+import TodoState from '../../constants/TodoState';
 
-
-
-const myTasks = [{'content':'Type something here.',}, {'content':'Type something here.',}];
-const inProgress = [{'content':'Progress A.',}, {'content':'Progress B.',}];
-const completed = [{'content': "Completed A"}, {'content': 'completed B'}];
-const todo = {myTasks, inProgress, completed};
-
-function CreateCheckbox(prop) {
-	return (
-		<div className="ToDoItem">
-	  	<div>
-				<label>
-					<input 
-						type="checkbox"
-						className="Item_checkbox"
-					/>
-				</label>
-				{prop.item.content}
-			</div>
+const CreateCheckbox = (prop) => (
+	<div className="ToDoItem">
+  	<div>
+			<label>
+				<input 
+					type="checkbox"
+					className="Item_checkbox"
+				/>
+			</label>
+			{prop.item.content}
 		</div>
-	);
-}
+	</div>
+);
 
 class ToDoList extends Component {
 	constructor(props) {
     super(props);
-    this.state = {value: 'myTasks', items: todo.myTasks, toDoValue: ''};
+    this.state = {value: 'myTasks', items: TodoState.myTasks, toDoValue: ''};
     // binding every method you need
     this.switchTab = this.switchTab.bind(this);
     this.toDoInputBinding = this.toDoInputBinding.bind(this);
     this.addToList = this.addToList.bind(this);
+    this.clearTodoInput = this.clearTodoInput.bind(this);
+    this.createCheckboxes = this.createCheckboxes.bind(this);
   }
   switchTab(tabName) {
   	this.setState({
   		value: tabName,
-  		items: todo[tabName]
+  		items: TodoState[tabName],
   	});
+  	this.clearTodoInput();
   }
   addToList(e) {
-		const test = {'content': this.state.toDoValue};
-  	this.state.items.push(test);
+		const newToDo = {'content': this.state.toDoValue};
+  	this.state.items.push(newToDo);
+  	this.setState({items: this.state.items});
+  	this.clearTodoInput();
+  }
+  clearTodoInput() {
+  	this.setState({
+  		toDoValue: ''
+  	})
   }
   toDoInputBinding(e) {
   	this.setState({
   		toDoValue: e.target.value,
   	});
   }
-  createCheckboxes = (props) => (
+  createCheckboxes = (props, edit) => (
 		props.map( (item, index) => <CreateCheckbox item={item} key={index} /> )
 	)
 	render() {
@@ -81,7 +81,7 @@ class ToDoList extends Component {
 						onChange={this.toDoInputBinding}
 						value={this.state.toDoValue}
 					/>
-					<button onClick={this.addToList}>check</button>
+					<button onClick={this.addToList}>Add</button>
 				</div>
         <div className="ToDoItems">
 					{this.createCheckboxes(this.state.items)}
